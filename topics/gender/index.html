@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"><!--
+
+                      __,__r========qL,
+                   ,m**`~'            XW;
+            ____Lm/'      _mmmm    jW@+===m___,
+      .m+*f~TX7''|    `Y*X@X7~MMLL          ._JXmL,
+    jf~'    `YM#:~      !*##@ d j@~Y!     `~~~+m_
+   Z            M       `Nd*=+5+      -====L__ !M-
+  m!            `Y=;m_,   ~Yf~~               YL`W;
+  |        .mmmmmqrL_XXX~*==mL,                 Y#|
+  |  ,Z~~~~~'        ~~~~    X#         -==L__,  !#,
+  | |tL             ____WY*f~~                `~qd#W
+  V,| `~~Y*+mL_,  :f~~ ~                   q_    V#b
+  `b|         `Y+-W;                        `\\,  _#
+    V              N,  m                 YL,   `\L#@
+                    N  #                   YL,   `##,
+                   .P  #                     `\   V#|
+                 ../   #           ^           YL |W
+                -P     #    :P  ;  ||           `|!W
+                Z'     #   :P  :'   #,           #L#
+            _ _Wb    jWD  jf   /    |b           V@*
+          j+N##8#4rt8#~.,jf    |    |#       b   |W
+       .r*'m8####q#P8###*'    W    :##       V;  d|
+      /K_jWK#X###~#|###mW#   :P  j;##|    #, `#, @
+     !TGW###8#m#K7q=WWmd##mmm#m.Z8###!    #W  |b |
+     /4#@##W#+##P:WZWMZ*W=m##WMN|WZWP:#;m,d#W;Dd |
+    W*~~~M#W!KWjW5!!/WV##N7j#KXPNMX#DW###b###D#Xb|
+   !'    d!JXXXW!`!Ldm@#bd#WW8K)X|X#8#8#K##V#!K5|#
+        d@f~  jf.Z\/Vb*Y+W#j(WMZPrMM#@##K#@##;WWj##,
+        ~    m*~'   '#`\8#W4KW#qX@VW##W#8##8#rNWK###G-
+            `'       #`8*=#YWWK/b+WW#W#*#MWm8*KKd#M#**m,
+                     #Z'  VW#f'~M+NM#####K#8@WLMZKX#W#+M;
+                              ~` *YM#######@*)P/+DK####m#
+                                   `'*##fXVPX|Vr~##Z#W@N@
+                                      `WL_d**DfWX#8#WK##*b
+                                                `W###@#N#/b
+                                                 .#mj#X~YM#
+                                                 ~`#WdD~  Y!
+                                                 `'_|#f--
+
+ built by Presidential Innovation Fellows (http://pif.gov)
+-->
+  <head>
+    <title>MIDAAS | PIF.gov</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/midaas.min.css">
+    <link rel="shortcut icon" type="image/ico" href="/assets/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon.png">
+    <script src="/assets/js/midaas.min.js"></script>
+    <!-- Polyfills--><!--[if lt IE 9]>
+      <script src="/assets/js/vendor/html5shiv.js"></script>
+      <script src="/assets/js/vendor/respond.min.js"></script>
+      <link rel="stylesheet" href="/assets/stylesheets/output/main/ie.css">
+    <![endif]-->
+  </head>
+  <script>
+    if (window.Ag == null) {
+      window.Ag = {};
+    }
+    
+    window.Ag.config = {
+      chart1: {
+        title: "National Income Data",
+        type: "bar",
+        dataRequester: {
+          type: "IncomeQuantilesCompare",
+          query: {
+            compare: "sex",
+            compareRegion: "US"
+          }
+        },
+        ui: {
+          compare: false,
+          compareRegion: false
+        }
+      },
+      chart2: {
+        title: "Ratio of Male to Female Income by State",
+        type: "map",
+        dataRequester: {
+          type: "IncomeQuantileRatio",
+          query: {
+            compare: "state",
+            compareQuantile: 50,
+            ratioType: "sex",
+            ratioNumerator: "female",
+            ratioDenominator: "male"
+          }
+        },
+        ui: {
+          compareQuantile: true
+        },
+        connect: "chart3"
+      },
+      chart3: {
+        title: "State Income Data",
+        type: "bar",
+        dataRequester: {
+          type: "IncomeQuantilesCompare",
+          query: {
+            compare: "sex",
+            compareRegion: "CA"
+          },
+        },
+        ui: {
+          compare: false,
+          compareRegion: true
+        }
+      }
+    };
+  </script>
+  <body class="topics-gender">
+    <div class="disclaimer">
+      <div class="usa-grid"><span class="usa-disclaimer-official"><img alt="US flag signifying that this is a United States Federal Government website" src="/assets/img/us_flag_small.png" class="usa-flag_icon">An official website of the United States Government</span></span><span class="usa-disclaimer-stage">This site is currently in alpha.<a href="https://18f.gsa.gov/dashboard/stages/#alpha" target="_blank">Learn More.</a></span></div>
+    </div>
+    <nav class="app-nav">
+      <div class="usa-grid">
+        <div class="logo"><a href="/">
+            <h1 class="logotype">MIDAAS</h1>
+            <div class="beta">Alpha</div></a></div>
+        <div class="app-links">
+          <ul>
+            <li><a href="/topics">Topics</a></li>
+            <li><a href="/developers">Developers</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="main-content">
+      <div class="usa-grid">
+        <header class="page-header">
+          <div class="navigation-tree"><a href="/topics" class="back">Topics</a>&nbsp;/&nbsp;Gender</div>
+          <h1>Income-distribution by Gender</h1>
+        </header>
+        <div class="chart-widget widget primary-widget">
+          <div id="chart1"></div>
+        </div>
+        <div class="chart-widget widget primary-widget">
+          <div id="chart2" class="map-chart"></div>
+        </div>
+        <div class="chart-widget widget primary-widget">
+          <div id="chart3"></div>
+        </div>
+      </div>
+    </section>
+    <footer class="app-footer">
+      <div class="usa-grid">
+        <div class="footer-logos col">
+          <ul>
+            <li class="census"><a href="http://www.census.gov"><img alt="Census Bureau Logo" src="/assets/img/logos/census.png"></a></li>
+            <li class="commerce"><a href="https://www.commerce.gov/"><img alt="Deptartment of Commerce Logo" src="/assets/img/logos/commerce.png"></a></li>
+            <li class="pif"><a href="https://pif.gov"><img alt="Presidential Innovation Fellows Logo" src="/assets/img/logos/pif.png"></a></li>
+            <li class="gsa"><a href="https://gsa.gov"><img alt="General Services Adminstration Logo" src="/assets/img/logos/gsa.png"></a></li>
+          </ul>
+        </div>
+        <div class="footer-info col">
+          <div class="app-logo">
+            <h1>MIDAAS</h1>
+          </div>
+          <div class="links"><a href="https://github.com/CommerceDataService/midaas-website"><i class="fa fa-github"></i><span class="label">GitHub</span></a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

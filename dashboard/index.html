@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"><!--
+
+                      __,__r========qL,
+                   ,m**`~'            XW;
+            ____Lm/'      _mmmm    jW@+===m___,
+      .m+*f~TX7''|    `Y*X@X7~MMLL          ._JXmL,
+    jf~'    `YM#:~      !*##@ d j@~Y!     `~~~+m_
+   Z            M       `Nd*=+5+      -====L__ !M-
+  m!            `Y=;m_,   ~Yf~~               YL`W;
+  |        .mmmmmqrL_XXX~*==mL,                 Y#|
+  |  ,Z~~~~~'        ~~~~    X#         -==L__,  !#,
+  | |tL             ____WY*f~~                `~qd#W
+  V,| `~~Y*+mL_,  :f~~ ~                   q_    V#b
+  `b|         `Y+-W;                        `\\,  _#
+    V              N,  m                 YL,   `\L#@
+                    N  #                   YL,   `##,
+                   .P  #                     `\   V#|
+                 ../   #           ^           YL |W
+                -P     #    :P  ;  ||           `|!W
+                Z'     #   :P  :'   #,           #L#
+            _ _Wb    jWD  jf   /    |b           V@*
+          j+N##8#4rt8#~.,jf    |    |#       b   |W
+       .r*'m8####q#P8###*'    W    :##       V;  d|
+      /K_jWK#X###~#|###mW#   :P  j;##|    #, `#, @
+     !TGW###8#m#K7q=WWmd##mmm#m.Z8###!    #W  |b |
+     /4#@##W#+##P:WZWMZ*W=m##WMN|WZWP:#;m,d#W;Dd |
+    W*~~~M#W!KWjW5!!/WV##N7j#KXPNMX#DW###b###D#Xb|
+   !'    d!JXXXW!`!Ldm@#bd#WW8K)X|X#8#8#K##V#!K5|#
+        d@f~  jf.Z\/Vb*Y+W#j(WMZPrMM#@##K#@##;WWj##,
+        ~    m*~'   '#`\8#W4KW#qX@VW##W#8##8#rNWK###G-
+            `'       #`8*=#YWWK/b+WW#W#*#MWm8*KKd#M#**m,
+                     #Z'  VW#f'~M+NM#####K#8@WLMZKX#W#+M;
+                              ~` *YM#######@*)P/+DK####m#
+                                   `'*##fXVPX|Vr~##Z#W@N@
+                                      `WL_d**DfWX#8#WK##*b
+                                                `W###@#N#/b
+                                                 .#mj#X~YM#
+                                                 ~`#WdD~  Y!
+                                                 `'_|#f--
+
+ built by Presidential Innovation Fellows (http://pif.gov)
+-->
+  <head>
+    <title>MIDAAS | PIF.gov</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/midaas.min.css">
+    <link rel="shortcut icon" type="image/ico" href="/assets/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon.png">
+    <script src="/assets/js/midaas.min.js"></script>
+    <!-- Polyfills--><!--[if lt IE 9]>
+      <script src="/assets/js/vendor/html5shiv.js"></script>
+      <script src="/assets/js/vendor/respond.min.js"></script>
+      <link rel="stylesheet" href="/assets/stylesheets/output/main/ie.css">
+    <![endif]-->
+  </head>
+  <body class="pages-dashboard">
+    <div class="disclaimer">
+      <div class="usa-grid"><span class="usa-disclaimer-official"><img alt="US flag signifying that this is a United States Federal Government website" src="/assets/img/us_flag_small.png" class="usa-flag_icon">An official website of the United States Government</span></span><span class="usa-disclaimer-stage">This site is currently in alpha.<a href="https://18f.gsa.gov/dashboard/stages/#alpha" target="_blank">Learn More.</a></span></div>
+    </div>
+    <nav class="app-nav">
+      <div class="usa-grid">
+        <div class="logo"><a href="/">
+            <h1 class="logotype">MIDAAS</h1>
+            <div class="beta">Alpha</div></a></div>
+        <div class="app-links">
+          <ul>
+            <li><a href="/topics">Topics</a></li>
+            <li><a href="/developers">Developers</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="dashboard-menu">
+      <div class="logo-container">
+        <div class="logo"><a href="/">
+            <h1 class="logotype">MIDAAS</h1>
+            <div class="beta">Beta</div></a></div>
+      </div>
+      <div class="toolbox">
+        <div class="widgets">
+          <h2>Widgets</h2>
+          <ul id="toolbox-menu" class="drag-menu">
+            <li data-widget="bar-chart" class="drag-item">Bar Chart</li>
+            <li data-widget="map" class="drag-item">Map</li>
+          </ul>
+        </div>
+        <div class="data disable-menu">
+          <h2>Data</h2>
+          <ul id="data-menu" class="drag-menu">
+            <li data-type="data" data-dataset="quantiles" class="drag-item">Quantiles</li>
+            <li data-type="data" data-dataset="ratio" class="drag-item">Ratios</li>
+          </ul>
+        </div>
+        <div class="demographic disable-menu">
+          <h2>Demographic</h2>
+          <ul id="demographic-menu" class="drag-menu">
+            <li data-type="demographic" class="drag-item">All</li>
+            <li data-type="demographic" class="drag-item">Gender</li>
+            <li data-type="demographic" class="drag-item">Age</li>
+            <li data-type="demographic" class="drag-item">Race</li>
+          </ul>
+        </div>
+        <div class="geography disable-menu">
+          <h2>Geography</h2>
+          <ul id="geographic-menu" class="drag-menu">
+            <li data-type="geographic" class="drag-item">National</li>
+            <li data-type="geographic" class="drag-item">State</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <section class="main-content">
+      <div class="usa-grid">
+        <header class="dashboard-header">
+          <h1>Story Maker</h1>
+        </header>
+        <div id="active-widget-container" class="widget-container">
+          <div class="drop-area"></div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

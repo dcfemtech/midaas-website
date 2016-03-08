@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"><!--
+
+                      __,__r========qL,
+                   ,m**`~'            XW;
+            ____Lm/'      _mmmm    jW@+===m___,
+      .m+*f~TX7''|    `Y*X@X7~MMLL          ._JXmL,
+    jf~'    `YM#:~      !*##@ d j@~Y!     `~~~+m_
+   Z            M       `Nd*=+5+      -====L__ !M-
+  m!            `Y=;m_,   ~Yf~~               YL`W;
+  |        .mmmmmqrL_XXX~*==mL,                 Y#|
+  |  ,Z~~~~~'        ~~~~    X#         -==L__,  !#,
+  | |tL             ____WY*f~~                `~qd#W
+  V,| `~~Y*+mL_,  :f~~ ~                   q_    V#b
+  `b|         `Y+-W;                        `\\,  _#
+    V              N,  m                 YL,   `\L#@
+                    N  #                   YL,   `##,
+                   .P  #                     `\   V#|
+                 ../   #           ^           YL |W
+                -P     #    :P  ;  ||           `|!W
+                Z'     #   :P  :'   #,           #L#
+            _ _Wb    jWD  jf   /    |b           V@*
+          j+N##8#4rt8#~.,jf    |    |#       b   |W
+       .r*'m8####q#P8###*'    W    :##       V;  d|
+      /K_jWK#X###~#|###mW#   :P  j;##|    #, `#, @
+     !TGW###8#m#K7q=WWmd##mmm#m.Z8###!    #W  |b |
+     /4#@##W#+##P:WZWMZ*W=m##WMN|WZWP:#;m,d#W;Dd |
+    W*~~~M#W!KWjW5!!/WV##N7j#KXPNMX#DW###b###D#Xb|
+   !'    d!JXXXW!`!Ldm@#bd#WW8K)X|X#8#8#K##V#!K5|#
+        d@f~  jf.Z\/Vb*Y+W#j(WMZPrMM#@##K#@##;WWj##,
+        ~    m*~'   '#`\8#W4KW#qX@VW##W#8##8#rNWK###G-
+            `'       #`8*=#YWWK/b+WW#W#*#MWm8*KKd#M#**m,
+                     #Z'  VW#f'~M+NM#####K#8@WLMZKX#W#+M;
+                              ~` *YM#######@*)P/+DK####m#
+                                   `'*##fXVPX|Vr~##Z#W@N@
+                                      `WL_d**DfWX#8#WK##*b
+                                                `W###@#N#/b
+                                                 .#mj#X~YM#
+                                                 ~`#WdD~  Y!
+                                                 `'_|#f--
+
+ built by Presidential Innovation Fellows (http://pif.gov)
+-->
+  <head>
+    <title>MIDAAS | PIF.gov</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/midaas.min.css">
+    <link rel="shortcut icon" type="image/ico" href="/assets/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/img/favicons/favicon.png">
+    <script src="/assets/js/midaas.min.js"></script>
+    <!-- Polyfills--><!--[if lt IE 9]>
+      <script src="/assets/js/vendor/html5shiv.js"></script>
+      <script src="/assets/js/vendor/respond.min.js"></script>
+      <link rel="stylesheet" href="/assets/stylesheets/output/main/ie.css">
+    <![endif]-->
+  </head>
+  <body class="pages-developers">
+    <div class="disclaimer">
+      <div class="usa-grid"><span class="usa-disclaimer-official"><img alt="US flag signifying that this is a United States Federal Government website" src="/assets/img/us_flag_small.png" class="usa-flag_icon">An official website of the United States Government</span></span><span class="usa-disclaimer-stage">This site is currently in alpha.<a href="https://18f.gsa.gov/dashboard/stages/#alpha" target="_blank">Learn More.</a></span></div>
+    </div>
+    <nav class="app-nav">
+      <div class="usa-grid">
+        <div class="logo"><a href="/">
+            <h1 class="logotype">MIDAAS</h1>
+            <div class="beta">Alpha</div></a></div>
+        <div class="app-links">
+          <ul>
+            <li><a href="/topics">Topics</a></li>
+            <li><a href="/developers">Developers</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="main-content">
+      <div class="usa-grid">
+        <div class="col-sm">
+          <ul class="usa-sidenav-list">
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li class="parent-item"><a href="#widgets-get-started">Widgets</a>
+              <ul class="usa-sidenav-sub_list">
+                <li><a href="#widgets-get-started">Getting Started</a></li>
+                <li><a href="#widgets-bar-chart">Bar Chart</a></li>
+                <li><a href="#widgets-map">Map</a></li>
+              </ul>
+            </li>
+            <li class="parent-item"><a href="#api-get-started">API</a>
+              <ul class="usa-sidenav-sub_list">
+                <li><a href="#api-get-started">Getting Started</a></li>
+                <li><a href="#api-examples">Examples</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg">
+          <section id="getting-started">
+            <header>
+              <h1>Developers</h1>
+            </header>
+            <p>Browse our collection of tools you can embed on your own websites.</p>
+          </section>
+          <section id="widgets">
+            <header>
+              <h2>Widgets</h2>
+            </header>
+            <p>
+              These prebuilt visualization, which are linked to APIs, will
+              make it easier for developers of all skill to add rich income
+              insights to their page.
+              Below are two widgets for embedding barcharts and maps that pull
+              from our custom APIs.  More to come...
+            </p>
+            <section id="widgets-bar-chart">
+              <header>
+                <h3>Bar Chart</h3>
+              </header>
+              <p>
+                This tool allows users to explore income distributions across
+                different geographies by categories (Race, Gender, and Age
+                Groups).
+                Want to learn more about the income distribution in your home state or other states? This tool is for you.
+                Coming soon will be city data and exploration across
+                time.
+              </p>
+              <div class="chart-widget widget primary-widget">
+                <div id="chart1"></div>
+              </div>
+            </section>
+            <section id="widgets-map">
+              <header>
+                <h3>Map</h3>
+              </header>
+              <p>
+                This tool allows users to explore income distributions across
+                the US at different percentiles by categories (Race, Gender, and Age
+                Groups). Want to know what the 1% is in different states?
+                Want to know what the median individual income is in different states?
+                This tool is for you. Coming soon will be city level maps as well and exploration across
+                time.
+              </p>
+              <div class="chart-widget widget primary-widget">
+                <div id="chart2"></div>
+              </div>
+            </section>
+          </section>
+          <section id="api-get-started">
+            <header>
+              <h2>API</h2>
+            </header>
+            <p>
+              This API returns incomes of different percentiles for the overall population
+              for various geographies. In addition, you can make calls for different subsets
+              of the population based on race, gender, and agegroups. Please review documentation
+              on our github.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+    <footer class="app-footer">
+      <div class="usa-grid">
+        <div class="footer-logos col">
+          <ul>
+            <li class="census"><a href="http://www.census.gov"><img alt="Census Bureau Logo" src="/assets/img/logos/census.png"></a></li>
+            <li class="commerce"><a href="https://www.commerce.gov/"><img alt="Deptartment of Commerce Logo" src="/assets/img/logos/commerce.png"></a></li>
+            <li class="pif"><a href="https://pif.gov"><img alt="Presidential Innovation Fellows Logo" src="/assets/img/logos/pif.png"></a></li>
+            <li class="gsa"><a href="https://gsa.gov"><img alt="General Services Adminstration Logo" src="/assets/img/logos/gsa.png"></a></li>
+          </ul>
+        </div>
+        <div class="footer-info col">
+          <div class="app-logo">
+            <h1>MIDAAS</h1>
+          </div>
+          <div class="links"><a href="https://github.com/CommerceDataService/midaas-website"><i class="fa fa-github"></i><span class="label">GitHub</span></a></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    if (window.Ag == null) {
+      window.Ag = {};
+    }
+    
+    window.Ag.config = {
+      chart1: {
+        title: "Explore Income Distributions",
+        type: "bar",
+        dataRequester: {
+          type: "IncomeQuantilesCompare",
+          query: {
+            compare: "overall",
+            compareRegion: "US"
+          }
+        },
+        ui: {
+          compare: true,
+          compareRegion: true
+        }
+      },
+      chart2: {
+        title: "Explore Income Distribution Map",
+        type: "map",
+        dataRequester: {
+          type: "IncomeQuantileRatio",
+          query: {
+            compare: "state",
+            compareQuantile: 50,
+            ratioType: "sex",
+            ratioNumerator: "female",
+            ratioDenominator: "male"
+          }
+        },
+        ui: {
+          compareQuantile: true
+        }
+      }
+    };
+  </script>
+</html>

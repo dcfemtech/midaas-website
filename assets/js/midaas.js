@@ -4576,7 +4576,7 @@ module.exports = eventmap;
     };
 
     DataRequesterIncomeQuantilesCompare.prototype.fetchData = function(callback) {
-      var compare, compareQuantile, compareRegion, params, query, ref, ref1, ref2, url;
+      var compare, compareAge, compareGender, compareQuantile, compareRace, compareRegion, params, query, ref, ref1, ref2, ref3, ref4, ref5, url;
       params = [];
       url = this.getApiUrl();
       query = (ref = this.config) != null ? ref.query : void 0;
@@ -4597,7 +4597,19 @@ module.exports = eventmap;
       }
       compareRegion = (ref2 = query.compareRegion) != null ? ref2.toUpperCase() : void 0;
       if (compareRegion && compareRegion !== "US") {
-        params.push("state=" + compareRegion);
+        params.push("state=" + encodeURIComponent(compareRegion));
+      }
+      compareRace = (ref3 = query.compareRace) != null ? ref3.toLowerCase() : void 0;
+      if (compareRace) {
+        params.push("race=" + encodeURIComponent(compareRace));
+      }
+      compareGender = (ref4 = query.compareGender) != null ? ref4.toLowerCase() : void 0;
+      if (compareGender) {
+        params.push("sex=" + encodeURIComponent(compareGender));
+      }
+      compareAge = (ref5 = query.compareAge) != null ? ref5.toLowerCase() : void 0;
+      if (compareAge) {
+        params.push("agegroup=" + encodeURIComponent(compareAge));
       }
       compareQuantile = query.compareQuantile;
       if (parseInt(compareQuantile) >= 0 && parseInt(compareQuantile) <= 100) {
@@ -4953,7 +4965,7 @@ module.exports = eventmap;
       var ref, ref1;
       ChartBar.__super__.initUi.call(this);
       if ((ref = this.config.ui) != null ? ref.compare : void 0) {
-        $.get("/assets/templates/ui/toggle-compare-dropdown.html", (function(_this) {
+        $.get("/assets/templates/ui/toggle-compare.html", (function(_this) {
           return function(html) {
             var ref1, ref2;
             $("#" + _this.id + " .ui").append(html);
@@ -5101,14 +5113,49 @@ module.exports = eventmap;
       var ref;
       ChartMap.__super__.initUi.call(this);
       if ((ref = this.config.ui) != null ? ref.compare : void 0) {
-        return $.get("/assets/templates/ui/toggle-compare-dropdown.html", (function(_this) {
+        return $.get("/assets/templates/ui/toggle-compare-multi.html", (function(_this) {
           return function(html) {
             var ref1, ref2;
             $("#" + _this.id + " .ui").append(html);
+            $("#" + _this.id + " #compare .toggles").hide();
+            $("#" + _this.id + " #compare .nav").on("click", function(event) {
+              var selectedNav;
+              $("#" + _this.id + " #compare .nav").removeClass("active");
+              $(event.currentTarget).addClass("active");
+              $("#" + _this.id + " #compare .toggles").hide();
+              selectedNav = event.currentTarget.innerText.toLowerCase();
+              if (selectedNav === "overall") {
+                return _this.react({
+                  compareRace: void 0,
+                  compareGender: void 0,
+                  compareAge: void 0
+                });
+              } else {
+                return $("#" + _this.id + " #compare .toggles." + selectedNav).show();
+              }
+            });
             $("#" + _this.id + " #compare .toggle").on("click", function(event) {
-              return _this.react({
-                compare: event.currentTarget.innerText.toLowerCase()
-              });
+              var queryUpdate, selectedNav, selectedTrigger;
+              selectedNav = $("#" + _this.id + " #compare .nav.active").text().toLowerCase();
+              selectedTrigger = event.currentTarget.innerText.toLowerCase();
+              queryUpdate = {
+                compareRace: void 0,
+                compareGender: void 0,
+                compareAge: void 0
+              };
+              switch (selectedNav) {
+                case "race":
+                  queryUpdate.compareRace = selectedTrigger;
+                  return _this.react(queryUpdate);
+                case "gender":
+                  queryUpdate.compareGender = selectedTrigger;
+                  return _this.react(queryUpdate);
+                case "age":
+                  queryUpdate.compareAge = selectedTrigger;
+                  return _this.react(queryUpdate);
+                case "overall":
+                  return _this.react(queryUpdate);
+              }
             });
             return _this.react({
               compare: (ref1 = _this.config.dataRequester) != null ? (ref2 = ref1.query) != null ? ref2.compare : void 0 : void 0
@@ -5222,13 +5269,31 @@ module.exports = eventmap;
     };
 
     ChartMap.prototype.react = function(queryUpdate) {
-      var compare, ref;
+      var compareAge, compareGender, compareRace, ref, ref1, ref2;
       ChartMap.__super__.react.call(this, queryUpdate);
-      compare = (ref = queryUpdate.compare) != null ? ref.toLowerCase() : void 0;
-      if (compare === "overall" || compare === "race" || compare === "gender" || compare === "sex" || compare === "age") {
-        this.config.dataRequester.query.compare = compare;
+      compareRace = (ref = queryUpdate.compareRace) != null ? ref.toLowerCase() : void 0;
+      if (compareRace === "asian" || compareRace === "black" || compareRace === "hispanic" || compareRace === "white") {
+        this.config.dataRequester.query.compareRace = compareRace;
         $("#" + this.id + " #compare .toggles li").removeClass("active");
-        return $("#" + this.id + " #compare .toggles li ." + compare).addClass("active");
+        $("#" + this.id + " #compare .toggle." + compareRace).addClass("active");
+      } else {
+        this.config.dataRequester.query.compareRace = void 0;
+      }
+      compareGender = (ref1 = queryUpdate.compareGender) != null ? ref1.toLowerCase() : void 0;
+      if (compareGender === "male" || compareGender === "female") {
+        this.config.dataRequester.query.compareGender = compareGender;
+        $("#" + this.id + " #compare .toggles li").removeClass("active");
+        $("#" + this.id + " #compare .toggle." + compareGender).addClass("active");
+      } else {
+        this.config.dataRequester.query.compareGender = void 0;
+      }
+      compareAge = (ref2 = queryUpdate.compareAge) != null ? ref2.toLowerCase() : void 0;
+      if (compareAge === "18-24" || compareAge === "25-34" || compareAge === "35-44" || compareAge === "45-54" || compareAge === "55-64" || compareAge === "65+") {
+        this.config.dataRequester.query.compareAge = compareAge;
+        $("#" + this.id + " #compare .toggles li").removeClass("active");
+        return $("#" + this.id + " #compare .toggle." + compareAge).addClass("active");
+      } else {
+        return this.config.dataRequester.query.compareAge = void 0;
       }
     };
 

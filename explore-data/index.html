@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-    <title>MIDAAS | Story Maker</title>
+    <title>MIDAAS | Explore Data</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/assets/css/midaas.min.css">
@@ -14,7 +14,7 @@
       <link rel="stylesheet" href="/assets/stylesheets/output/main/ie.css">
     <![endif]-->
   </head>
-  <body class="pages-dashboard">
+  <body class="pages-explore">
     <noscript>
       <iframe src="//www.googletagmanager.com/ns.html?id=GTM-TCR524" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
@@ -47,54 +47,56 @@
         </div>
       </div>
     </nav>
-    <div class="dashboard-menu">
-      <div class="logo-container">
-        <div class="logo"><a href="/">
-            <h1 class="logotype">MIDAAS</h1>
-            <div class="beta">Beta</div></a></div>
-      </div>
-      <div class="toolbox">
-        <div class="widgets">
-          <h2>Widgets</h2>
-          <ul id="toolbox-menu" class="drag-menu">
-            <li data-widget="bar-chart" class="drag-item">Bar Chart</li>
-            <li data-widget="map" class="drag-item">Map</li>
-          </ul>
-        </div>
-        <div class="data disable-menu">
-          <h2>Data</h2>
-          <ul id="data-menu" class="drag-menu">
-            <li data-type="data" data-dataset="quantiles" class="drag-item">Quantiles</li>
-            <li data-type="data" data-dataset="ratio" class="drag-item">Ratios</li>
-          </ul>
-        </div>
-        <div class="demographic disable-menu">
-          <h2>Demographic</h2>
-          <ul id="demographic-menu" class="drag-menu">
-            <li data-type="demographic" class="drag-item">All</li>
-            <li data-type="demographic" class="drag-item">Gender</li>
-            <li data-type="demographic" class="drag-item">Age</li>
-            <li data-type="demographic" class="drag-item">Race</li>
-          </ul>
-        </div>
-        <div class="geography disable-menu">
-          <h2>Geography</h2>
-          <ul id="geographic-menu" class="drag-menu">
-            <li data-type="geographic" class="drag-item">National</li>
-            <li data-type="geographic" class="drag-item">State</li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <section class="main-content">
       <div class="usa-grid">
-        <header class="dashboard-header">
-          <h1>Story Maker</h1>
+        <header>
+          <h1>Explore Data</h1>
         </header>
-        <div id="active-widget-container" class="widget-container">
-          <div class="drop-area"></div>
+        <div class="chart-widget widget primary-widget">
+          <div id="chart1"></div>
+        </div>
+        <div class="chart-widget widget primary-widget">
+          <div id="chart2" class="map-chart"></div>
         </div>
       </div>
     </section>
+    <script>
+      if (window.Ag == null) {
+        window.Ag = {};
+      }
+      
+      window.Ag.config = {
+        chart1: {
+          title: "Explore Income Distributions",
+          type: "bar",
+          dataRequester: {
+            type: "IncomeQuantilesCompare",
+            query: {
+              compare: "overall",
+              compareRegion: "US"
+            }
+          },
+          ui: {
+            compare: true,
+            compareRegion: true
+          }
+        },
+        chart2: {
+          title: "Explore Income Distribution Map",
+          type: "map",
+          dataRequester: {
+            type: "IncomeQuantilesCompare",
+            query: {
+              compare: "state",
+              compareQuantile: 50
+            }
+          },
+          ui: {
+            compare: true,
+            compareQuantile: true
+          }
+        }
+      };
+    </script>
   </body>
 </html>

@@ -1,46 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js"><!--
-
-                      __,__r========qL,
-                   ,m**`~'            XW;
-            ____Lm/'      _mmmm    jW@+===m___,
-      .m+*f~TX7''|    `Y*X@X7~MMLL          ._JXmL,
-    jf~'    `YM#:~      !*##@ d j@~Y!     `~~~+m_
-   Z            M       `Nd*=+5+      -====L__ !M-
-  m!            `Y=;m_,   ~Yf~~               YL`W;
-  |        .mmmmmqrL_XXX~*==mL,                 Y#|
-  |  ,Z~~~~~'        ~~~~    X#         -==L__,  !#,
-  | |tL             ____WY*f~~                `~qd#W
-  V,| `~~Y*+mL_,  :f~~ ~                   q_    V#b
-  `b|         `Y+-W;                        `\\,  _#
-    V              N,  m                 YL,   `\L#@
-                    N  #                   YL,   `##,
-                   .P  #                     `\   V#|
-                 ../   #           ^           YL |W
-                -P     #    :P  ;  ||           `|!W
-                Z'     #   :P  :'   #,           #L#
-            _ _Wb    jWD  jf   /    |b           V@*
-          j+N##8#4rt8#~.,jf    |    |#       b   |W
-       .r*'m8####q#P8###*'    W    :##       V;  d|
-      /K_jWK#X###~#|###mW#   :P  j;##|    #, `#, @
-     !TGW###8#m#K7q=WWmd##mmm#m.Z8###!    #W  |b |
-     /4#@##W#+##P:WZWMZ*W=m##WMN|WZWP:#;m,d#W;Dd |
-    W*~~~M#W!KWjW5!!/WV##N7j#KXPNMX#DW###b###D#Xb|
-   !'    d!JXXXW!`!Ldm@#bd#WW8K)X|X#8#8#K##V#!K5|#
-        d@f~  jf.Z\/Vb*Y+W#j(WMZPrMM#@##K#@##;WWj##,
-        ~    m*~'   '#`\8#W4KW#qX@VW##W#8##8#rNWK###G-
-            `'       #`8*=#YWWK/b+WW#W#*#MWm8*KKd#M#**m,
-                     #Z'  VW#f'~M+NM#####K#8@WLMZKX#W#+M;
-                              ~` *YM#######@*)P/+DK####m#
-                                   `'*##fXVPX|Vr~##Z#W@N@
-                                      `WL_d**DfWX#8#WK##*b
-                                                `W###@#N#/b
-                                                 .#mj#X~YM#
-                                                 ~`#WdD~  Y!
-                                                 `'_|#f--
-
- built by Presidential Innovation Fellows (http://pif.gov)
--->
+<html lang="en" class="no-js">
   <head>
     <title>MIDAAS | PIF.gov</title>
     <meta charset="utf-8">
@@ -67,7 +26,7 @@
               <h1 class="logotype">MIDAAS</h1></a>
             <div class="beta">Alpha</div>
           </div>
-          <div class="bottom data-service">Commerce Data Service</div>
+          <div class="bottom data-service"><a href="https://www.commerce.gov/dataservice" style="color: #fff;">Commerce Data Service</a></div>
         </div>
         <div class="app-links">
           <ul>
@@ -109,18 +68,18 @@
               <h2>Widgets</h2>
             </header>
             <p>
-              These prebuilt visualization, which are linked to APIs, will
-              make it easier for developers of all skill to add rich income
-              insights to their page.
-              Below are two widgets for embedding barcharts and maps that pull
-              from our custom APIs.  More to come...
+              These prebuilt visualizations, which harness Census APIs, will
+              make it easier for developers of all skill-levels to add rich income
+              insights to their sites.
+              Below are two widgets for embedding bar charts and maps that pull data
+              from our custom APIs. This is a work in progress, so more will come...
             </p>
             <section id="widgets-bar-chart">
               <header>
                 <h3>Bar Chart</h3>
               </header>
               <p>
-                This tool allows users to explore income distributions across
+                This visualization allows users to explore income distributions across
                 different geographies by categories (Race, Gender, and Age
                 Groups).
                 Want to learn more about the income distribution in your home state or other states? This tool is for you.
@@ -130,13 +89,21 @@
               <div class="chart-widget widget primary-widget">
                 <div id="chart1"></div>
               </div>
+              <p style="margin-bottom: 0;"><b>embed on your site:</b></p>
+              <div class="code-block"><code>
+                  &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/css/midaas.min.css"&gt;<br />
+                  &lt;script src="https://midaas.commerce.gov/assets/js/midaas.min.js"&gt;&lt;/script&gt;<br />
+                  &lt;div id="chart1"&gt;&lt;/div&gt;<br />
+                  &lt;script&gt;<br />
+                  window.Ag.config = {"chart1":{"title":"Explore Income Distributions","type":"bar","dataRequester":{"type":"IncomeQuantilesCompare","query":{"compare":"overall","compareRegion":"US"}},"ui":{"compare":true,"compareRegion":true}}}<br />
+                  &lt;/script&gt;</code></div>
             </section>
             <section id="widgets-map">
               <header>
                 <h3>Map</h3>
               </header>
               <p>
-                This tool allows users to explore income distributions across
+                This visualization allows users to explore income distributions across
                 the US at different percentiles by categories (Race, Gender, and Age
                 Groups). Want to know what the 1% is in different states?
                 Want to know what the median individual income is in different states?
@@ -146,6 +113,14 @@
               <div class="chart-widget widget primary-widget">
                 <div id="chart2"></div>
               </div>
+              <p style="margin-bottom: 0;"><b>embed on your site:</b></p>
+              <div class="code-block"><code>
+                  &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/css/midaas.min.css"&gt;<br />
+                  &lt;script src="https://midaas.commerce.gov/assets/js/midaas.min.js"&gt;&lt;/script&gt;<br />
+                  &lt;div id="chart2"&gt;&lt;/div&gt;<br />
+                  &lt;script&gt;<br />
+                  window.Ag.config = {"chart2":{"title":"Explore Income Distribution Map","type":"map","dataRequester":{"type":"IncomeQuantilesCompare","query":{"compare":"state","compareQuantile":50}},"ui":{"compare":true,"compareQuantile":true}}}<br />
+                  &lt;/script&gt;</code></div>
             </section>
           </section>
           <section id="api-get-started">
@@ -153,11 +128,99 @@
               <h2>API</h2>
             </header>
             <p>
-              This API returns incomes of different percentiles for the overall population
-              for various geographies. In addition, you can make calls for different subsets
-              of the population based on race, gender, and agegroups. Please review documentation
-              on our github.
+              The MIDAAS API returns incomes of different percentiles for the overall population
+              over various geographies. In addition, you can make calls for different subsets
+              of the population based on race, gender, and agegroups.
             </p>
+            <section id="api-quantiles">
+              <header>
+                <h3 style="margin-bottom: 0px;">[GET] /income/quantile<small style="color: #999;">?[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
+              </header><i>returns the income amounts for each quantile</i>
+              <div style="margin-top: 10px;" class="code-block"><code>
+                  curl https://brbimhg0w9.execute-api.us-west-2.amazonaws.com/dev/income/quantiles?state=CA<br />
+                  {<br />
+                  &nbsp;&nbsp;overall: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;5%: 400,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;10%: 4000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;20%: 10000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;30%: 16000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;40%: 23000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;50%: 30000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;60%: 40000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;70%: 52000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;80%: 71000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;90%: 100000,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;95%: 143200,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;99%: 455000<br />
+                  &nbsp;&nbsp;}<br />
+                  }</code></div>
+            </section>
+            <section id="api-distribution">
+              <header>
+                <h3 style="margin-bottom: 0px;">[GET] /income/distribution<small style="color: #999;">?[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
+              </header><i>returns the income amounts for each quantile</i>
+              <div style="margin-top: 10px;" class="code-block"><code>
+                  curl https://brbimhg0w9.execute-api.us-west-2.amazonaws.com/dev/income/distribution?state=CA&amp;race=white&amp;agegroup=26-35&amp;sex=male<br />
+                  {<br />
+                  &nbsp;&nbsp;$10.00k-$20.00k: 0.15619340014024805,<br />
+                  &nbsp;&nbsp;$0.00-$10.00k: 0.12184424812148269,<br />
+                  &nbsp;&nbsp;$40.00k-$50.00k: 0.09866641332711831,<br />
+                  &nbsp;&nbsp;$30.00k-$40.00k: 0.1299378999153864,<br />
+                  &nbsp;&nbsp;$150.00k-$160.00k: 0.008667766597727326,<br />
+                  &nbsp;&nbsp;$140.00k-$150.00k: 0.004545759000274755,<br />
+                  &nbsp;&nbsp;$100.00k-$110.00k: 0.025573397160318825,<br />
+                  &nbsp;&nbsp;$60.00k-$70.00k: 0.05845855642933399,<br />
+                  &nbsp;&nbsp;$320.00k-$330.00k: 0.0011215742774696848,<br />
+                  &nbsp;&nbsp;$50.00k-$60.00k: 0.07746859113594082,<br />
+                  &nbsp;&nbsp;$90.00k-$100.00k: 0.028085149427047096,<br />
+                  &nbsp;&nbsp;$70.00k-$80.00k: 0.04407698059355269,<br />
+                  &nbsp;&nbsp;$80.00k-$90.00k: 0.03376546863487802,<br />
+                  &nbsp;&nbsp;$190.00k-$200.00k: 0.001135243677560723,<br />
+                  &nbsp;&nbsp;$200.00k-$210.00k: 0.0031460124309524427,<br />
+                  &nbsp;&nbsp;$250.00k-$260.00k: 0.0022868906352306916,<br />
+                  &nbsp;&nbsp;$170.00k-$180.00k: 0.0020825331038696704,<br />
+                  &nbsp;&nbsp;$210.00k-$220.00k: 0.000624691584160446,<br />
+                  &nbsp;&nbsp;($10.00k)-$0.00: 0.00013601053090583014,<br />
+                  &nbsp;&nbsp;$230.00k-$240.00k: 0.0005686470437871893,<br />
+                  &nbsp;&nbsp;$420.00k-$430.00k: 0.00008475028056443686,<br />
+                  &nbsp;&nbsp;$20.00k-$30.00k: 0.15899152633888355,<br />
+                  &nbsp;&nbsp;$450.00k-$460.00k: 0.004974294693128802,<br />
+                  &nbsp;&nbsp;$110.00k-$120.00k: 0.008863922489033723,<br />
+                  &nbsp;&nbsp;$120.00k-$130.00k: 0.013690587661179313,<br />
+                  &nbsp;&nbsp;$240.00k-$250.00k: 0.00035062011233512997,<br />
+                  &nbsp;&nbsp;$130.00k-$140.00k: 0.008001383343289214,<br />
+                  &nbsp;&nbsp;$160.00k-$170.00k: 0.0033469526122907045,<br />
+                  &nbsp;&nbsp;$180.00k-$190.00k: 0.0020572447137012497,<br />
+                  &nbsp;&nbsp;$300.00k-$310.00k: 0.00008338334055533305,<br />
+                  &nbsp;&nbsp;$500.00k-$510.00k: 0.00022964592152944184,<br />
+                  &nbsp;&nbsp;$220.00k-$230.00k: 0.0006821030645428064,<br />
+                  &nbsp;&nbsp;$540.00k-$550.00k: 0.00005604454037325664,<br />
+                  &nbsp;&nbsp;$370.00k-$380.00k: 0.00009978662066457889,<br />
+                  &nbsp;&nbsp;$260.00k-$270.00k: 0.00006561312043698338,<br />
+                  &nbsp;&nbsp;$380.00k-$390.00k: 0.00003690738024580315<br />
+                  }</code></div>
+            </section>
+            <section id="api-params">
+              <header>
+                <h3>query params</h3><b>state</b><br><i>the two-letter postal abbreviation</i>
+                <div style="margin-top: 10px;" class="text-block"><code>
+                    "AL", "AK", "AR", "AR", "CA", "CO", "CT", "DE",
+                    "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA",
+                    "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+                    "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
+                    "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
+                    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
+                    "WV", "WI", "WY"</code></div><br><b>race</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>
+                    "white",
+                    "african american",
+                    "hispanic",
+                    "asian"</code></div><br><b>sex</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>"male", "female"</code></div><br><b>agegroup</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>"0-15", "16-25", "26-35", "36-45", "46-55", "55-65", "65+"</code></div><br><b>compare</b><i>field to compare against</i>
+                <div style="margin-top: 10px;" class="text-block"><code>"state", "race", "sex", "agegroup"</code></div>
+              </header>
+            </section>
           </section>
         </div>
       </div>

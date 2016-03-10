@@ -5054,6 +5054,12 @@ input.widget-title {
     right: 1em;
     top: 0.4em; }
 
+.pages-explore .main-content h1 {
+  margin-top: 0; }
+
+.pages-explore .primary-widget {
+  margin-bottom: 1.5em; }
+
 .topics-gender ol {
   display: block;
   list-style-type: decimal;
@@ -5254,6 +5260,8 @@ input.widget-title {
     .pages-home .powered-by h2 {
       font-size: 1.3em;
       font-weight: normal; }
+    .pages-home .powered-by img {
+      width: 100%; }
     .pages-home .powered-by li {
       display: inline-block;
       vertical-align: top;

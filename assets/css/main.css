@@ -5451,4 +5451,16 @@ input[type="range"] {
   font-size: 0.8em;
   margin: 0; }
 
+.code-block {
+  font-size: 12px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px; }
+
+.text-block {
+  font-size: 12px;
+  background-color: #ddd;
+  color: #000;
+  padding: 10px; }
+
 /*# sourceMappingURL=main.css.map */

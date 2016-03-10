@@ -4632,11 +4632,14 @@ input[type="range"] {
     text-indent: 100%;
     white-space: nowrap; }
   .app-footer .links {
-    font-size: 1.5em; }
+    font-size: 1.1em; }
     .app-footer .links a {
       color: #ffffff; }
       .app-footer .links a:hover {
         color: #56bcff; }
+    .app-footer .links i {
+      color: #56bcff;
+      margin-right: 0.25em; }
 
 .footer-info {
   text-align: right; }
@@ -4646,20 +4649,30 @@ input[type="range"] {
     margin: 0; }
 
 .footer-logos {
-  float: right; }
-  .footer-logos li {
-    float: left;
+  display: block;
+  margin: 0; }
+  .footer-logos:after {
+    content: ".";
     display: block;
-    margin-right: 7.4229703521%;
-    width: 19.432772236%;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  .footer-logos li {
+    float: right;
+    margin-left: 5%;
     margin-top: 0;
-    max-width: 85px; }
-    .footer-logos li:last-child {
-      margin-right: 0; }
+    width: 20%; }
     .footer-logos li.census {
       padding-top: 1em; }
     .footer-logos li a {
       display: block; }
+
+.footer-logos-container {
+  clear: both;
+  float: right;
+  margin-top: 1em;
+  max-width: 350px;
+  width: 100%; }
 
 .app-nav {
   background-color: #323a45;
@@ -5234,6 +5247,23 @@ input.widget-title {
       .pages-home .usa-hero .usa-button:hover {
         box-shadow: inset 0 0 0 2px #ffffff;
         color: #ffffff; }
+  .pages-home .powered-by {
+    text-align: center; }
+    .pages-home .powered-by a {
+      display: inline-block; }
+    .pages-home .powered-by h2 {
+      font-size: 1.3em;
+      font-weight: normal; }
+    .pages-home .powered-by li {
+      display: inline-block;
+      vertical-align: top;
+      width: 100px; }
+      .pages-home .powered-by li:first-child {
+        margin-right: 1em; }
+      .pages-home .powered-by li.census {
+        padding-top: 1em; }
+    .pages-home .powered-by ul {
+      width: 100%; }
   .pages-home .preposition {
     margin: 0 0.5em; }
 

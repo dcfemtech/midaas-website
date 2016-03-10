@@ -5012,12 +5012,6 @@ module.exports = eventmap;
           var xLabel, yLabel;
           xLabel = data.xLabel;
           yLabel = data.yLabel;
-          if (data.xLabel != null) {
-            delete data.xLabel;
-          }
-          if (data.yLabel != null) {
-            delete data.yLabel;
-          }
           data = _this.translateData(data);
           _this._chart = c3.generate({
             bindto: bindElement,
@@ -5068,6 +5062,12 @@ module.exports = eventmap;
 
     ChartBar.prototype.translateData = function(data) {
       var dataArr, group, labelArr, seriesArr, xLabel;
+      if (data.xLabel != null) {
+        delete data.xLabel;
+      }
+      if (data.yLabel != null) {
+        delete data.yLabel;
+      }
       seriesArr = [];
       for (group in data) {
         labelArr = ["x"];
@@ -5273,6 +5273,12 @@ module.exports = eventmap;
 
     ChartMap.prototype.translateData = function(data) {
       var dataArr, fips, group, state;
+      if (data.xLabel != null) {
+        delete data.xLabel;
+      }
+      if (data.yLabel != null) {
+        delete data.yLabel;
+      }
       dataArr = [];
       for (state in data) {
         for (group in data[state]) {

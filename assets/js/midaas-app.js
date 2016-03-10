@@ -123,6 +123,8 @@
         timeout: 10000
       }).done((function(_this) {
         return function(data) {
+          data.xLabel = "Quantile";
+          data.yLabel = "Earnings ($s)";
           return callback(null, data);
         };
       })(this)).fail((function(_this) {
@@ -218,6 +220,7 @@
               data[state][quantile] = nData[state][quantile] / dData[state][quantile];
             }
           }
+          data.yLabel = "Ratio " + ratioNumerator + "/" + ratioDenominator;
           return callback(null, data);
         };
       })(this)).fail((function(_this) {
@@ -407,9 +410,11 @@
     };
 
     ChartAbstract.prototype.setTitle = function() {
-      var el, ref, title;
-      el = $("#" + this.chart.id);
-      title = (ref = this.chart.config) != null ? ref.title : void 0;
+      var el, ref, state, title;
+      el = $("#" + this.id);
+      title = (ref = this.config) != null ? ref.title : void 0;
+      state = $("#compareRegion option:selected").text();
+      title = title.replace("{{state}}", state);
       return el.find(".chart-title").text(title);
     };
 
@@ -503,6 +508,15 @@
       bindElement = "#" + this.id + " .chart";
       return this.dataRequester.fetchData((function(_this) {
         return function(err, data) {
+          var xLabel, yLabel;
+          xLabel = data.xLabel;
+          yLabel = data.yLabel;
+          if (data.xLabel != null) {
+            delete data.xLabel;
+          }
+          if (data.yLabel != null) {
+            delete data.yLabel;
+          }
           data = _this.translateData(data);
           _this._chart = c3.generate({
             bindto: bindElement,
@@ -521,7 +535,11 @@
             },
             axis: {
               x: {
+                label: xLabel,
                 type: "category"
+              },
+              y: {
+                label: yLabel
               }
             },
             color: {
@@ -574,8 +592,9 @@
       compareRegion = (ref1 = queryUpdate.compareRegion) != null ? ref1.toUpperCase() : void 0;
       if (compareRegion != null) {
         this.config.dataRequester.query.compareRegion = compareRegion;
-        return $("#" + this.id + " #compareRegion").val(compareRegion);
+        $("#" + this.id + " #compareRegion").val(compareRegion);
       }
+      return this.setTitle();
     };
 
     return ChartBar;
@@ -790,10 +809,11 @@
       if (compareAge === "18-24" || compareAge === "25-34" || compareAge === "35-44" || compareAge === "45-54" || compareAge === "55-64" || compareAge === "65+") {
         this.config.dataRequester.query.compareAge = compareAge;
         $("#" + this.id + " #compare .toggles li").removeClass("active");
-        return $("#" + this.id + " #compare .toggle." + compareAge).addClass("active");
+        $("#" + this.id + " #compare .toggle." + compareAge).addClass("active");
       } else {
-        return this.config.dataRequester.query.compareAge = void 0;
+        this.config.dataRequester.query.compareAge = void 0;
       }
+      return this.setTitle();
     };
 
     return ChartMap;

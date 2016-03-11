@@ -123,7 +123,7 @@
         timeout: 10000
       }).done((function(_this) {
         return function(data) {
-          data.xLabel = "Quantile";
+          data.xLabel = "Percentile";
           data.yLabel = "Earnings ($s)";
           return callback(null, data);
         };
@@ -305,7 +305,7 @@
             $("#" + _this.id + " .ui").append(html);
             $("#" + _this.id + " .compareQuantile").change(function(event) {
               return _this.react({
-                compareQuantile: $(event.currentTarget).text().toUpperCase()
+                compareQuantile: $(event.currentTarget).val().toUpperCase()
               });
             });
             return _this.react({
@@ -491,7 +491,7 @@
             $("#" + _this.id + " .ui").append(html);
             $("#" + _this.id + " .compareRegion").change(function(event) {
               return _this.react({
-                compareRegion: $(event.target).text().toUpperCase()
+                compareRegion: $(event.target).val().toUpperCase()
               });
             });
             return _this.react({
@@ -508,9 +508,9 @@
       bindElement = "#" + this.id + " .chart";
       return this.dataRequester.fetchData((function(_this) {
         return function(err, data) {
-          var xLabel, yLabel;
-          xLabel = data.xLabel;
-          yLabel = data.yLabel;
+          var ref, ref1, xLabel, yLabel;
+          xLabel = (ref = data.xLabel) != null ? ref : "";
+          yLabel = (ref1 = data.yLabel) != null ? ref1 : "";
           data = _this.translateData(data);
           _this._chart = c3.generate({
             bindto: bindElement,
@@ -529,7 +529,7 @@
             },
             axis: {
               x: {
-                label: "Percentiles",
+                label: xLabel,
                 type: "category"
               },
               y: {

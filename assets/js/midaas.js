@@ -5378,6 +5378,7 @@ module.exports = eventmap;
     function Midaas() {
       this.initConfig();
       this.createCharts();
+      this.initObserveCheck();
     }
 
     Midaas.prototype.initConfig = function() {
@@ -5430,6 +5431,14 @@ module.exports = eventmap;
           });
         };
       })(this));
+    };
+
+    Midaas.prototype.initObserveCheck = function() {
+      if (Object.observe == null) {
+        return setInterval(function() {
+          return Platform.performMicrotaskCheckpoint();
+        }, 100);
+      }
     };
 
     return Midaas;

@@ -79,11 +79,11 @@
               <h2>Widgets</h2>
             </header>
             <p>
-              These prebuilt visualizations, which harness Census APIs, will
+              These prebuilt visualizations, which harness Census data, will
               make it easier for developers of all skill-levels to add rich income
               insights to their sites.
               Below are two widgets for embedding bar charts and maps that pull data
-              from our custom APIs. This is a work in progress, so more will come...
+              from the MIDAAS API.
             </p>
             <section id="widgets-bar-chart">
               <header>
@@ -91,7 +91,7 @@
               </header>
               <p>
                 This visualization allows users to explore income distributions across
-                different geographies by categories (Race, Gender, and Age
+                different geographies by categories (Race, Sex, and Age
                 Groups).
                 Want to learn more about the income distribution in your home state or other states? This tool is for you.
                 Coming soon will be city data and exploration across
@@ -103,6 +103,7 @@
               <p style="margin-bottom: 0;"><b>embed on your site:</b></p>
               <div class="code-block"><code>
                   &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/css/midaas.min.css"&gt;<br />
+                  &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/js/key.js"&gt;<br />
                   &lt;script src="https://midaas.commerce.gov/assets/js/midaas.min.js"&gt;&lt;/script&gt;<br />
                   &lt;div id="chart1"&gt;&lt;/div&gt;<br />
                   &lt;script&gt;<br />
@@ -127,6 +128,7 @@
               <p style="margin-bottom: 0;"><b>embed on your site:</b></p>
               <div class="code-block"><code>
                   &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/css/midaas.min.css"&gt;<br />
+                  &lt;link rel="stylesheet" href="https://midaas.commerce.gov/assets/js/key.js"&gt;<br />
                   &lt;script src="https://midaas.commerce.gov/assets/js/midaas.min.js"&gt;&lt;/script&gt;<br />
                   &lt;div id="chart2"&gt;&lt;/div&gt;<br />
                   &lt;script&gt;<br />
@@ -141,27 +143,28 @@
             <p>
               The MIDAAS API returns incomes of different percentiles for the overall population
               over various geographies. In addition, you can make calls for different subsets
-              of the population based on race, gender, and agegroups.
+              of the population based on race, gender, and agegroups.<br><br>
+              To use the MIDAAS API, <a href="https://api.data.gov/signup/">sign up</a> for a unique API key through <a href="https://data.gov">data.gov</a>, the home of U.S. Government's open data. You may use this key to access MIDAAS and data.gov's <a href="https://api.data.gov">other APIs</a>.
             </p>
             <section id="api-quantiles">
               <header>
-                <h3 style="margin-bottom: 0px;">[GET] /income/quantile<small style="color: #999;">?[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
+                <h3 style="margin-bottom: 0px;">[GET] /quantiles?<small style="color: #999;">[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
               </header><i>returns the income amounts for each quantile</i>
               <div style="margin-top: 10px;" class="code-block"><code>
-                  curl https://brbimhg0w9.execute-api.us-west-2.amazonaws.com/dev/income/quantiles?state=CA<br />
+                  curl https://api.commerce.gov/midaas/quantiles?state=CA&api_key={your_api_key}<br />
                   {<br />
                   &nbsp;&nbsp;overall: {<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;5%: 400,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;10%: 4000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;20%: 10000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;30%: 16000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;40%: 23000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;50%: 30000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;60%: 40000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;70%: 52000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;80%: 71000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;90%: 100000,<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;95%: 143200,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;5%: 2000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;10%: 4300,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;20%: 10000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;30%: 15000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;40%: 32000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;50%: 42000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;60%: 52000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;70%: 55000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;80%: 80000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;90%: 120000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;95%: 180000,</br>
                   &nbsp;&nbsp;&nbsp;&nbsp;99%: 455000<br />
                   &nbsp;&nbsp;}<br />
                   }</code></div>
@@ -171,44 +174,42 @@
                 <h3 style="margin-bottom: 0px;">[GET] /income/distribution<small style="color: #999;">?[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
               </header><i>returns the income amounts for each quantile</i>
               <div style="margin-top: 10px;" class="code-block"><code>
-                  curl https://brbimhg0w9.execute-api.us-west-2.amazonaws.com/dev/income/distribution?state=CA&amp;race=white&amp;agegroup=26-35&amp;sex=male<br />
+                  curl https://api.commerce.gov/midaas/distribution?state=CA&amp;race=white&amp;agegroup=26-35&amp;sex=male&api_key={your_api_key}<br />
                   {<br />
-                  &nbsp;&nbsp;$10.00k-$20.00k: 0.15619340014024805,<br />
-                  &nbsp;&nbsp;$0.00-$10.00k: 0.12184424812148269,<br />
-                  &nbsp;&nbsp;$40.00k-$50.00k: 0.09866641332711831,<br />
-                  &nbsp;&nbsp;$30.00k-$40.00k: 0.1299378999153864,<br />
-                  &nbsp;&nbsp;$150.00k-$160.00k: 0.008667766597727326,<br />
-                  &nbsp;&nbsp;$140.00k-$150.00k: 0.004545759000274755,<br />
-                  &nbsp;&nbsp;$100.00k-$110.00k: 0.025573397160318825,<br />
-                  &nbsp;&nbsp;$60.00k-$70.00k: 0.05845855642933399,<br />
-                  &nbsp;&nbsp;$320.00k-$330.00k: 0.0011215742774696848,<br />
-                  &nbsp;&nbsp;$50.00k-$60.00k: 0.07746859113594082,<br />
-                  &nbsp;&nbsp;$90.00k-$100.00k: 0.028085149427047096,<br />
-                  &nbsp;&nbsp;$70.00k-$80.00k: 0.04407698059355269,<br />
-                  &nbsp;&nbsp;$80.00k-$90.00k: 0.03376546863487802,<br />
-                  &nbsp;&nbsp;$190.00k-$200.00k: 0.001135243677560723,<br />
-                  &nbsp;&nbsp;$200.00k-$210.00k: 0.0031460124309524427,<br />
-                  &nbsp;&nbsp;$250.00k-$260.00k: 0.0022868906352306916,<br />
-                  &nbsp;&nbsp;$170.00k-$180.00k: 0.0020825331038696704,<br />
-                  &nbsp;&nbsp;$210.00k-$220.00k: 0.000624691584160446,<br />
-                  &nbsp;&nbsp;($10.00k)-$0.00: 0.00013601053090583014,<br />
-                  &nbsp;&nbsp;$230.00k-$240.00k: 0.0005686470437871893,<br />
-                  &nbsp;&nbsp;$420.00k-$430.00k: 0.00008475028056443686,<br />
-                  &nbsp;&nbsp;$20.00k-$30.00k: 0.15899152633888355,<br />
-                  &nbsp;&nbsp;$450.00k-$460.00k: 0.004974294693128802,<br />
-                  &nbsp;&nbsp;$110.00k-$120.00k: 0.008863922489033723,<br />
-                  &nbsp;&nbsp;$120.00k-$130.00k: 0.013690587661179313,<br />
-                  &nbsp;&nbsp;$240.00k-$250.00k: 0.00035062011233512997,<br />
-                  &nbsp;&nbsp;$130.00k-$140.00k: 0.008001383343289214,<br />
-                  &nbsp;&nbsp;$160.00k-$170.00k: 0.0033469526122907045,<br />
-                  &nbsp;&nbsp;$180.00k-$190.00k: 0.0020572447137012497,<br />
-                  &nbsp;&nbsp;$300.00k-$310.00k: 0.00008338334055533305,<br />
-                  &nbsp;&nbsp;$500.00k-$510.00k: 0.00022964592152944184,<br />
-                  &nbsp;&nbsp;$220.00k-$230.00k: 0.0006821030645428064,<br />
-                  &nbsp;&nbsp;$540.00k-$550.00k: 0.00005604454037325664,<br />
-                  &nbsp;&nbsp;$370.00k-$380.00k: 0.00009978662066457889,<br />
-                  &nbsp;&nbsp;$260.00k-$270.00k: 0.00006561312043698338,<br />
-                  &nbsp;&nbsp;$380.00k-$390.00k: 0.00003690738024580315<br />
+                  &nbsp;&nbsp;$20.00k-$30.00k: 0.1261146303655346,<br/>
+                  &nbsp;&nbsp;$120.00k-$130.00k: 0.018000879457209275,<br/>
+                  &nbsp;&nbsp;$450.00k-$460.00k: 0.005737466859976182,<br/>
+                  &nbsp;&nbsp;$160.00k-$170.00k: 0.004153510772184425,<br/>
+                  &nbsp;&nbsp;$180.00k-$190.00k: 0.002701356626896694,<br/>
+                  &nbsp;&nbsp;$110.00k-$120.00k: 0.013195357305735017,<br/>
+                  &nbsp;&nbsp;$220.00k-$230.00k: 0.0006076886021645845,<br/>
+                  &nbsp;&nbsp;$130.00k-$140.00k: 0.011160008724588761,<br/>
+                  &nbsp;&nbsp;$370.00k-$380.00k: 0.0001702927752706897,<br/>
+                  &nbsp;&nbsp;$240.00k-$250.00k: 0.0004910497149928792,<br/>
+                  &nbsp;&nbsp;$380.00k-$390.00k: 0.00006298499907272085,<br/>
+                  &nbsp;&nbsp;$300.00k-$310.00k: 0.00014229944234948042,<br/>
+                  &nbsp;&nbsp;$500.00k-$510.00k: 0.0003919066608969297,<br/>
+                  &nbsp;&nbsp;$540.00k-$550.00k: 0.00009564388748079833,<br/>
+                  &nbsp;&nbsp;$30.00k-$40.00k: 0.12264112430556122,<br/>
+                  &nbsp;&nbsp;$10.00k-$20.00k: 0.11912912741282118,<br/>
+                  &nbsp;&nbsp;$0.00-$10.00k: 0.1194382204638262,<br/>
+                  &nbsp;&nbsp;$60.00k-$70.00k: 0.07218664088169667,<br/>
+                  &nbsp;&nbsp;$80.00k-$90.00k: 0.041483786611488695,<br/>
+                  &nbsp;&nbsp;$70.00k-$80.00k: 0.05156255285199575,<br/>
+                  &nbsp;&nbsp;$50.00k-$60.00k: 0.0887400317491051,<br/>
+                  &nbsp;&nbsp;$90.00k-$100.00k: 0.03705034251009218,<br/>
+                  &nbsp;&nbsp;$320.00k-$330.00k: 0.0015373005329230756,<br/>
+                  &nbsp;&nbsp;$100.00k-$110.00k: 0.032045367861554305,<br/>
+                  &nbsp;&nbsp;$150.00k-$160.00k: 0.011347797332935205,<br/>
+                  &nbsp;&nbsp;$40.00k-$50.00k: 0.10100577712408161,<br/>
+                  &nbsp;&nbsp;$170.00k-$180.00k: 0.0026453699610542755,<br/>
+                  &nbsp;&nbsp;$200.00k-$210.00k: 0.0046107352098975094,<br/>
+                  &nbsp;&nbsp;$140.00k-$150.00k: 0.005612663250702457,<br/>
+                  &nbsp;&nbsp;$190.00k-$200.00k: 0.0012457033149938124,<br/>
+                  &nbsp;&nbsp;$210.00k-$220.00k: 0.0007324922114383091,<br/>
+                  &nbsp;&nbsp;$230.00k-$240.00k: 0.0007453224890271966,<br/>
+                  &nbsp;&nbsp;($10.00k)-$0.00: 0.00029626277341613137,<br/>
+                  &nbsp;&nbsp;$250.00k-$260.00k: 0.002918304957036066<br/>
                   }</code></div>
             </section>
             <section id="api-params">
@@ -287,7 +288,7 @@
     if (window.Ag == null) {
       window.Ag = {};
     }
-    
+
     window.Ag.config = {
       chart1: {
         title: "Explore Income Distributions",

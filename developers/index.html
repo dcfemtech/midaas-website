@@ -72,7 +72,7 @@
             <header>
               <h1>Developers</h1>
             </header>
-            <p>Browse our collection of tools you can embed on your own websites.</p>
+            <p>Embedding widgets and using our API are two ways that developers can engage with and build on MIDAAS data.</p>
           </section>
           <section id="widgets">
             <header>
@@ -91,11 +91,9 @@
               </header>
               <p>
                 This visualization allows users to explore income distributions across
-                different geographies by categories (Race, Sex, and Age
-                Groups).
+                different geographies by categories (race, sex, and age
+                groups).
                 Want to learn more about the income distribution in your home state or other states? This tool is for you.
-                Coming soon will be city data and exploration across
-                time.
               </p>
               <div class="chart-widget widget primary-widget">
                 <div id="chart1"></div>
@@ -119,8 +117,7 @@
                 the US at different percentiles by categories (Race, Gender, and Age
                 Groups). Want to know what the 1% is in different states?
                 Want to know what the median individual income is in different states?
-                This tool is for you. Coming soon will be city level maps as well and exploration across
-                time.
+                This tool is for you.
               </p>
               <div class="chart-widget widget primary-widget">
                 <div id="chart2"></div>
@@ -143,7 +140,7 @@
             <p>
               The MIDAAS API returns incomes of different percentiles for the overall population
               over various geographies. In addition, you can make calls for different subsets
-              of the population based on race, gender, and agegroups.<br><br>
+              of the population based on race, sex, and age groups.<br><br>
               To use the MIDAAS API, <a href="https://api.data.gov/signup/">sign up</a> for a unique API key through <a href="https://data.gov">data.gov</a>, the home of U.S. Government's open data. You may use this key to access MIDAAS and data.gov's <a href="https://api.data.gov">other APIs</a>.
             </p>
             <section id="api-quantiles">
@@ -214,7 +211,8 @@
             </section>
             <section id="api-params">
               <header>
-                <h3>query params</h3><b>state</b><br><i>the two-letter postal abbreviation</i>
+                <h3>query params</h3>
+                <b>state</b><br><i>the two-letter postal abbreviation</i>
                 <div style="margin-top: 10px;" class="text-block"><code>
                     "AL", "AK", "AR", "AR", "CA", "CO", "CT", "DE",
                     "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA",
@@ -222,14 +220,17 @@
                     "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
                     "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
                     "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
-                    "WV", "WI", "WY"</code></div><br><b>race</b><br>
+                    "WV", "WI", "WY"</code></div>
+                <br><b>race</b><br>
                 <div style="margin-top: 10px;" class="text-block"><code>
                     "white",
                     "african american",
                     "hispanic",
                     "asian"</code></div><br><b>sex</b><br>
-                <div style="margin-top: 10px;" class="text-block"><code>"male", "female"</code></div><br><b>agegroup</b><br>
-                <div style="margin-top: 10px;" class="text-block"><code>"0-15", "16-25", "26-35", "36-45", "46-55", "55-65", "65+"</code></div><br><b>compare</b><i>field to compare against</i>
+                <div style="margin-top: 10px;" class="text-block"><code>"male", "female"</code></div>
+                <br><b>agegroup</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>"18-24", "25-34", "35-44", "45-54", "55-64", "65+"</code></div>
+                <br><b>compare</b><br><i>field to compare against</i>
                 <div style="margin-top: 10px;" class="text-block"><code>"state", "race", "sex", "agegroup"</code></div>
               </header>
             </section>

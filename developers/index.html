@@ -75,6 +75,116 @@
             </header>
             <p>Embedding widgets and using our API are two ways that developers can engage with and build on MIDAAS data.</p>
           </section>
+          <section id="api-get-started">
+            <header>
+              <h2>API</h2>
+            </header>
+            <p>
+              The MIDAAS API returns incomes of different percentiles for the overall population
+              over various geographies. In addition, you can make calls for different subsets
+              of the population based on race, sex, and age groups. <br><br>
+              While by default MIDAAS API will
+              respond with data from the most recent 1-Year American Community Survey (2014), you may access
+              quantile and distribution data for as far back as year 2005.<br><br>
+              To use the MIDAAS API, <a href="https://api.data.gov/signup/">sign up</a> for a unique API key through <a href="https://data.gov">data.gov</a>, the home of U.S. Government's open data. You may use this key to access MIDAAS and data.gov's <a href="https://api.data.gov">other APIs</a>.
+            </p>
+            <section id="api-quantiles">
+              <header>
+                <h3 style="margin-bottom: 0px;">[GET] /quantiles?<small style="color: #999;">[year=?][state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
+              </header><i>returns the income amounts for each quantile</i>
+              <div style="margin-top: 10px;" class="code-block"><code>
+                  curl https://api.commerce.gov/midaas/quantiles?state=CA&api_key={your_api_key}<br />
+                  {<br />
+                  &nbsp;&nbsp;overall: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;5%: 400,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;10%: 4000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;20%: 10000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;30%: 16000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;40%: 23000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;50%: 30000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;60%: 40000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;70%: 52000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;80%: 71000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;90%: 100000,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;95%: 143200,</br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;99%: 455000</br>
+                  &nbsp;&nbsp;}<br />
+                  }</code></div>
+            </section>
+            <section id="api-distribution">
+              <header>
+                <h3 style="margin-bottom: 0px;">[GET] /income/distribution<small style="color: #999;">?[year=?][state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
+              </header><i>returns the income amounts for each quantile</i>
+              <div style="margin-top: 10px;" class="code-block"><code>
+                  curl https://api.commerce.gov/midaas/distribution?state=CA&amp;race=white&amp;agegroup=26-35&amp;sex=male&api_key={your_api_key}<br />
+                  {<br />
+                  &nbsp;&nbsp;$20.00k-$30.00k: 0.1261146303655346,<br/>
+                  &nbsp;&nbsp;$120.00k-$130.00k: 0.018000879457209275,<br/>
+                  &nbsp;&nbsp;$450.00k-$460.00k: 0.005737466859976182,<br/>
+                  &nbsp;&nbsp;$160.00k-$170.00k: 0.004153510772184425,<br/>
+                  &nbsp;&nbsp;$180.00k-$190.00k: 0.002701356626896694,<br/>
+                  &nbsp;&nbsp;$110.00k-$120.00k: 0.013195357305735017,<br/>
+                  &nbsp;&nbsp;$220.00k-$230.00k: 0.0006076886021645845,<br/>
+                  &nbsp;&nbsp;$130.00k-$140.00k: 0.011160008724588761,<br/>
+                  &nbsp;&nbsp;$370.00k-$380.00k: 0.0001702927752706897,<br/>
+                  &nbsp;&nbsp;$240.00k-$250.00k: 0.0004910497149928792,<br/>
+                  &nbsp;&nbsp;$380.00k-$390.00k: 0.00006298499907272085,<br/>
+                  &nbsp;&nbsp;$300.00k-$310.00k: 0.00014229944234948042,<br/>
+                  &nbsp;&nbsp;$500.00k-$510.00k: 0.0003919066608969297,<br/>
+                  &nbsp;&nbsp;$540.00k-$550.00k: 0.00009564388748079833,<br/>
+                  &nbsp;&nbsp;$30.00k-$40.00k: 0.12264112430556122,<br/>
+                  &nbsp;&nbsp;$10.00k-$20.00k: 0.11912912741282118,<br/>
+                  &nbsp;&nbsp;$0.00-$10.00k: 0.1194382204638262,<br/>
+                  &nbsp;&nbsp;$60.00k-$70.00k: 0.07218664088169667,<br/>
+                  &nbsp;&nbsp;$80.00k-$90.00k: 0.041483786611488695,<br/>
+                  &nbsp;&nbsp;$70.00k-$80.00k: 0.05156255285199575,<br/>
+                  &nbsp;&nbsp;$50.00k-$60.00k: 0.0887400317491051,<br/>
+                  &nbsp;&nbsp;$90.00k-$100.00k: 0.03705034251009218,<br/>
+                  &nbsp;&nbsp;$320.00k-$330.00k: 0.0015373005329230756,<br/>
+                  &nbsp;&nbsp;$100.00k-$110.00k: 0.032045367861554305,<br/>
+                  &nbsp;&nbsp;$150.00k-$160.00k: 0.011347797332935205,<br/>
+                  &nbsp;&nbsp;$40.00k-$50.00k: 0.10100577712408161,<br/>
+                  &nbsp;&nbsp;$170.00k-$180.00k: 0.0026453699610542755,<br/>
+                  &nbsp;&nbsp;$200.00k-$210.00k: 0.0046107352098975094,<br/>
+                  &nbsp;&nbsp;$140.00k-$150.00k: 0.005612663250702457,<br/>
+                  &nbsp;&nbsp;$190.00k-$200.00k: 0.0012457033149938124,<br/>
+                  &nbsp;&nbsp;$210.00k-$220.00k: 0.0007324922114383091,<br/>
+                  &nbsp;&nbsp;$230.00k-$240.00k: 0.0007453224890271966,<br/>
+                  &nbsp;&nbsp;($10.00k)-$0.00: 0.00029626277341613137,<br/>
+                  &nbsp;&nbsp;$250.00k-$260.00k: 0.002918304957036066<br/>
+                  }</code></div>
+            </section>
+            <section id="api-params">
+              <header>
+                <h3>query params</h3>
+                <b>year</b><br><i>four digit year format</i>
+                <div style="margin-top: 10px;" class="text-block"><code>
+                  "2005", "2006", "2007", "2008", "2009", "2010",
+                  "2011", "2012", "2013", "2014"
+                </code></div>
+                <br><b>state</b><br><i>the two-letter postal abbreviation</i>
+                <div style="margin-top: 10px;" class="text-block"><code>
+                    "AL", "AK", "AR", "AR", "CA", "CO", "CT", "DE",
+                    "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA",
+                    "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+                    "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
+                    "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
+                    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
+                    "WV", "WI", "WY"</code></div>
+                <br><b>race</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>
+                    "white",
+                    "african american",
+                    "hispanic",
+                    "asian"</code></div><br><b>sex</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>"male", "female"</code></div>
+                <br><b>agegroup</b><br>
+                <div style="margin-top: 10px;" class="text-block"><code>"18-24", "25-34", "35-44", "45-54", "55-64", "65+"</code></div>
+                <br><b>compare</b><br><i>field to compare against</i>
+                <div style="margin-top: 10px;" class="text-block"><code>"state", "race", "sex", "agegroup"</code></div>
+              </header>
+            </section>
+          </section>
           <section id="widgets">
             <header>
               <h2>Widgets</h2>
@@ -132,108 +242,6 @@
                   &lt;script&gt;<br />
                   window.Ag.config = {"chart2":{"title":"Explore Income Distribution Map","type":"map","dataRequester":{"type":"IncomeQuantilesCompare","query":{"compare":"state","compareQuantile":50}},"ui":{"compare":true,"compareQuantile":true}}}<br />
                   &lt;/script&gt;</code></div>
-            </section>
-          </section>
-          <section id="api-get-started">
-            <header>
-              <h2>API</h2>
-            </header>
-            <p>
-              The MIDAAS API returns incomes of different percentiles for the overall population
-              over various geographies. In addition, you can make calls for different subsets
-              of the population based on race, sex, and age groups.<br><br>
-              To use the MIDAAS API, <a href="https://api.data.gov/signup/">sign up</a> for a unique API key through <a href="https://data.gov">data.gov</a>, the home of U.S. Government's open data. You may use this key to access MIDAAS and data.gov's <a href="https://api.data.gov">other APIs</a>.
-            </p>
-            <section id="api-quantiles">
-              <header>
-                <h3 style="margin-bottom: 0px;">[GET] /quantiles?<small style="color: #999;">[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
-              </header><i>returns the income amounts for each quantile</i>
-              <div style="margin-top: 10px;" class="code-block"><code>
-                  curl https://api.commerce.gov/midaas/quantiles?state=CA&api_key={your_api_key}<br />
-                  {<br />
-                  &nbsp;&nbsp;overall: {<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;5%: 2000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;10%: 4300,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;20%: 10000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;30%: 15000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;40%: 32000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;50%: 42000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;60%: 52000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;70%: 55000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;80%: 80000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;90%: 120000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;95%: 180000,</br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;99%: 455000<br />
-                  &nbsp;&nbsp;}<br />
-                  }</code></div>
-            </section>
-            <section id="api-distribution">
-              <header>
-                <h3 style="margin-bottom: 0px;">[GET] /income/distribution<small style="color: #999;">?[state=?][race=?][sex=?][agegroup=?][compare=?]</small></h3>
-              </header><i>returns the income amounts for each quantile</i>
-              <div style="margin-top: 10px;" class="code-block"><code>
-                  curl https://api.commerce.gov/midaas/distribution?state=CA&amp;race=white&amp;agegroup=26-35&amp;sex=male&api_key={your_api_key}<br />
-                  {<br />
-                  &nbsp;&nbsp;$20.00k-$30.00k: 0.1261146303655346,<br/>
-                  &nbsp;&nbsp;$120.00k-$130.00k: 0.018000879457209275,<br/>
-                  &nbsp;&nbsp;$450.00k-$460.00k: 0.005737466859976182,<br/>
-                  &nbsp;&nbsp;$160.00k-$170.00k: 0.004153510772184425,<br/>
-                  &nbsp;&nbsp;$180.00k-$190.00k: 0.002701356626896694,<br/>
-                  &nbsp;&nbsp;$110.00k-$120.00k: 0.013195357305735017,<br/>
-                  &nbsp;&nbsp;$220.00k-$230.00k: 0.0006076886021645845,<br/>
-                  &nbsp;&nbsp;$130.00k-$140.00k: 0.011160008724588761,<br/>
-                  &nbsp;&nbsp;$370.00k-$380.00k: 0.0001702927752706897,<br/>
-                  &nbsp;&nbsp;$240.00k-$250.00k: 0.0004910497149928792,<br/>
-                  &nbsp;&nbsp;$380.00k-$390.00k: 0.00006298499907272085,<br/>
-                  &nbsp;&nbsp;$300.00k-$310.00k: 0.00014229944234948042,<br/>
-                  &nbsp;&nbsp;$500.00k-$510.00k: 0.0003919066608969297,<br/>
-                  &nbsp;&nbsp;$540.00k-$550.00k: 0.00009564388748079833,<br/>
-                  &nbsp;&nbsp;$30.00k-$40.00k: 0.12264112430556122,<br/>
-                  &nbsp;&nbsp;$10.00k-$20.00k: 0.11912912741282118,<br/>
-                  &nbsp;&nbsp;$0.00-$10.00k: 0.1194382204638262,<br/>
-                  &nbsp;&nbsp;$60.00k-$70.00k: 0.07218664088169667,<br/>
-                  &nbsp;&nbsp;$80.00k-$90.00k: 0.041483786611488695,<br/>
-                  &nbsp;&nbsp;$70.00k-$80.00k: 0.05156255285199575,<br/>
-                  &nbsp;&nbsp;$50.00k-$60.00k: 0.0887400317491051,<br/>
-                  &nbsp;&nbsp;$90.00k-$100.00k: 0.03705034251009218,<br/>
-                  &nbsp;&nbsp;$320.00k-$330.00k: 0.0015373005329230756,<br/>
-                  &nbsp;&nbsp;$100.00k-$110.00k: 0.032045367861554305,<br/>
-                  &nbsp;&nbsp;$150.00k-$160.00k: 0.011347797332935205,<br/>
-                  &nbsp;&nbsp;$40.00k-$50.00k: 0.10100577712408161,<br/>
-                  &nbsp;&nbsp;$170.00k-$180.00k: 0.0026453699610542755,<br/>
-                  &nbsp;&nbsp;$200.00k-$210.00k: 0.0046107352098975094,<br/>
-                  &nbsp;&nbsp;$140.00k-$150.00k: 0.005612663250702457,<br/>
-                  &nbsp;&nbsp;$190.00k-$200.00k: 0.0012457033149938124,<br/>
-                  &nbsp;&nbsp;$210.00k-$220.00k: 0.0007324922114383091,<br/>
-                  &nbsp;&nbsp;$230.00k-$240.00k: 0.0007453224890271966,<br/>
-                  &nbsp;&nbsp;($10.00k)-$0.00: 0.00029626277341613137,<br/>
-                  &nbsp;&nbsp;$250.00k-$260.00k: 0.002918304957036066<br/>
-                  }</code></div>
-            </section>
-            <section id="api-params">
-              <header>
-                <h3>query params</h3>
-                <b>state</b><br><i>the two-letter postal abbreviation</i>
-                <div style="margin-top: 10px;" class="text-block"><code>
-                    "AL", "AK", "AR", "AR", "CA", "CO", "CT", "DE",
-                    "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA",
-                    "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
-                    "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
-                    "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI",
-                    "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA",
-                    "WV", "WI", "WY"</code></div>
-                <br><b>race</b><br>
-                <div style="margin-top: 10px;" class="text-block"><code>
-                    "white",
-                    "african american",
-                    "hispanic",
-                    "asian"</code></div><br><b>sex</b><br>
-                <div style="margin-top: 10px;" class="text-block"><code>"male", "female"</code></div>
-                <br><b>agegroup</b><br>
-                <div style="margin-top: 10px;" class="text-block"><code>"18-24", "25-34", "35-44", "45-54", "55-64", "65+"</code></div>
-                <br><b>compare</b><br><i>field to compare against</i>
-                <div style="margin-top: 10px;" class="text-block"><code>"state", "race", "sex", "agegroup"</code></div>
-              </header>
             </section>
           </section>
         </div>

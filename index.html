@@ -26,6 +26,36 @@
       '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TCR524');
     </script>
+    <script>
+      dataSet = [];
+
+      function callMidaas(gender, ageGroup){
+        var EPurl = "https://api.commerce.gov/midaas/distribution?";
+          EPurl += "year=2005";
+          EPurl += "&sex=" + gender;
+          EPurl += "&agegroup=" + ageGroup;
+          EPurl += "&callbackname=JSON_CALLBACK";
+          EPurl += "&api_key=YvcIGwzbGiud9JcHl0gPnVJXH5B4s7b5fXOkOVuq";
+
+        $.getJSON(EPurl, {
+          format: "json"
+        })
+        .done(function(data){
+          demographic = gender + " " + ageGroup;
+          keyVal = {demographic : demographic, distribution: data}
+          dataSet.push(keyVal)
+        })
+      }
+
+      var genders = ["female", "male"];
+      var ageGroups = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+
+      for (var i = 0; i < ageGroups.length; i ++){
+        callMidaas("female", ageGroups[i]);
+        callMidaas("male", ageGroups[i]);
+      }
+    </script>
+
     <div class="disclaimer">
       <div class="usa-grid"><span class="usa-disclaimer-official"><img alt="US flag signifying that this is a United States Federal Government website" src="/assets/img/us_flag_small.png" class="usa-flag_icon">An official website of the United States Government</span></span><span class="usa-disclaimer-stage">This site is currently in alpha.<a href="https://18f.gsa.gov/dashboard/stages/#alpha" target="_blank">Learn More.</a></span></div>
     </div>

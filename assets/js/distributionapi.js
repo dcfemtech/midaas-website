@@ -1,4 +1,4 @@
-var dataSet = [];
+var dataSet = {};
 
 function callMidaas(ageGroup, year){
   var EPurl = "https://api.commerce.gov/midaas/distribution?";
@@ -13,7 +13,7 @@ function callMidaas(ageGroup, year){
   })
   .done(function(data){
     data["age-group"] = ageGroup;
-    dataSet[year].push(data);
+    dataSet[year] = data;
   })
 }
 

@@ -1,5 +1,4 @@
 var dataSet = [];
-var yearSet = []
 
 function callMidaas(ageGroup, year){
   var EPurl = "https://api.commerce.gov/midaas/distribution?";

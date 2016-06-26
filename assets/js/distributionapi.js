@@ -13,7 +13,7 @@ function callMidaas(ageGroup, year){
   })
   .done(function(data){
     data["age-group"] = ageGroup;
-    dataSet[year] = data;
+    dataSet[year].push(data);
   })
 }
 

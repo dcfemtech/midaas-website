@@ -14,6 +14,8 @@
       <script src="/assets/js/vendor/respond.min.js"></script>
       <link rel="stylesheet" href="/assets/stylesheets/output/main/ie.css">
     <![endif]-->
+    <script src="/assets/js/midaas-dependencies.js"></script>
+    <script src="/assets/js/distributionapi.js"></script>
   </head>
   <body class="pages-home">
     <noscript>
@@ -25,35 +27,6 @@
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TCR524');
-    </script>
-    <script>
-      dataSet = [];
-
-      function callMidaas(gender, ageGroup){
-        var EPurl = "https://api.commerce.gov/midaas/distribution?";
-          EPurl += "year=2005";
-          EPurl += "&sex=" + gender;
-          EPurl += "&agegroup=" + ageGroup;
-          EPurl += "&callbackname=JSON_CALLBACK";
-          EPurl += "&api_key=YvcIGwzbGiud9JcHl0gPnVJXH5B4s7b5fXOkOVuq";
-
-        $.getJSON(EPurl, {
-          format: "json"
-        })
-        .done(function(data){
-          demographic = gender + " " + ageGroup;
-          keyVal = {demographic : demographic, distribution: data}
-          dataSet.push(keyVal)
-        })
-      }
-
-      var genders = ["female", "male"];
-      var ageGroups = ["18-24", "25-34", "35-44", "45-54", "55-64", "65%2B"]
-
-      for (var i = 0; i < ageGroups.length; i ++){
-        callMidaas("female", ageGroups[i]);
-        callMidaas("male", ageGroups[i]);
-      }
     </script>
 
     <div class="disclaimer">

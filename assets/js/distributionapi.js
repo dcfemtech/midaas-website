@@ -12,6 +12,9 @@ function callMidaas(ageGroup, year){
     format: "json"
   })
   .done(function(data){
+    if (ageGroup == "65%2B"){
+      ageGroup = "65+"
+    }
     data["age-group"] = ageGroup;
     dataSet[year].push(data);
   })
